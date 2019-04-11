@@ -26,21 +26,21 @@ windows 10、vs2017、支持多种数据库、Asp.Net Core MVC 2.2
 
 ### 预览
 #### Client
-![image](https://github.com/EminemJK/General.CMS/blob/master/Doc/images/c1.png)
+![image](https://github.com/EminemJK/General.CMS/blob/master/GeneralCMS/Doc/images/a1.png)
 
-![image](https://github.com/EminemJK/General.CMS/blob/master/Doc/images/c2.png)
+![image](https://github.com/EminemJK/General.CMS/blob/master/GeneralCMS/Doc/images/c2.png)
 
-![image](https://github.com/EminemJK/General.CMS/blob/master/Doc/images/c3.png)
+![image](https://github.com/EminemJK/General.CMS/blob/master/GeneralCMS/Doc/images/c3.png)
 #### Admin
-![image](https://github.com/EminemJK/General.CMS/blob/master/Doc/images/a1.png)
+![image](https://github.com/EminemJK/General.CMS/blob/master/GeneralCMS/Doc/images/a1.png)
 
-![image](https://github.com/EminemJK/General.CMS/blob/master/Doc/images/a2.png)
+![image](https://github.com/EminemJK/General.CMS/blob/master/GeneralCMS/Doc/images/a2.png)
 
-![image](https://github.com/EminemJK/General.CMS/blob/master/Doc/images/a3.png)
+![image](https://github.com/EminemJK/General.CMS/blob/master/GeneralCMS/Doc/images/a3.png)
 
-![image](https://github.com/EminemJK/General.CMS/blob/master/Doc/images/a4.png)
+![image](https://github.com/EminemJK/General.CMS/blob/master/GeneralCMS/Doc/images/a4.png)
 
-![image](https://github.com/EminemJK/General.CMS/blob/master/Doc/images/a5.png)
+![image](https://github.com/EminemJK/General.CMS/blob/master/GeneralCMS/Doc/images/a5.png)
 
 ## To Be Continued
 👍👍👍👍👍👍👍👍👍👍👍👍👍👍👍👍👍👍👍👍👍👍👍👍👍👍👍👍👍
