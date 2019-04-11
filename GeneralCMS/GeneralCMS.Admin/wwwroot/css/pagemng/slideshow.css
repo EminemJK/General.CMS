@@ -1,0 +1,27 @@
+﻿.table-tr td {
+    vertical-align: middle !important;
+}
+
+.slideshow-img img {
+    width: 200px;
+}
+
+
+.bg-section {
+    width: 200px;
+    height: 100px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border: 1px solid #bab5b5;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+    .bg-section button {
+        display: none;
+    }
+     
+    .bg-section:hover button{
+
+        display:table-cell;
+    }

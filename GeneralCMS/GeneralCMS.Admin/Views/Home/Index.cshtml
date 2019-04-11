@@ -1,0 +1,39 @@
+﻿@section header{
+    <script type="text/javascript">
+
+        function changeFrameHeight() {
+            var ifm = document.getElementById("contextFrame");
+            ifm.height = document.documentElement.clientHeight - 110;
+        }
+
+        window.onresize = function () {
+            changeFrameHeight();
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+
+            var hash = location.hash;
+            var url = hash.substring(1, hash.length);
+            if (url == "") {
+                url = "/Home/Welcome";
+            }
+            $("#contextFrame").attr("src", url);
+            changeFrameHeight();
+        }, false)
+
+    </script>
+}
+
+<iframe src="/Home/Welcome" id="contextFrame" height="600px" width="100%" frameborder='0'></iframe>
+
+@section Scripts{
+    <script>
+        $('.sidebar-refresh').click(function (e) {
+            e.preventDefault();
+            var origin = window.location.origin;
+            var route = window.location.href.replace(origin, "").replace("/#","");
+            
+            $("#contextFrame").attr("src", route);
+        });
+    </script>
+}

@@ -1,0 +1,72 @@
+﻿@{
+    Layout = "_ContextLayout";
+    ViewData["Title"] = "操作日志";
+}
+@model GeneralCMS.Models.ViewModel.Admin.VActionLogs
+
+@section header{
+    <style type="text/css">
+        table tr:hover {
+            background-color: #428bca;
+            color: #FFF
+        }
+    </style>
+}
+<section class="content-header">
+    <h1>
+        操作日志
+        <small>Logs</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> 系统管理</a></li>
+        <li class="active">操作日志</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row"> 
+        <div class="col-md-12">
+            <ul class="timeline">
+                @foreach (var yyyyMMdd in Model.Logs.Keys)
+                {
+                    <li class="time-label">
+                        <span class="bg-red">
+                            @yyyyMMdd
+                        </span>
+                    </li>
+                    var dataList = Model.Logs[yyyyMMdd];
+                    <li>
+                        <i class="fa fa-history bg-blue"></i>
+                        <div class="timeline-item">
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th style="width:200px">操作时间</th>
+                                    <th style="width:200px">操作记录</th>
+                                    <th style="width:100px">操作人</th>
+                                    <th style="width:100px">IP</th>
+                                    <th>接口明细</th>
+                                </tr>
+                                @foreach (var data in dataList)
+                                {
+                                    <tr>
+                                        <td>@data.CreateTimeString</td>
+                                        <td>@data.Title</td>
+                                        <td>@data.AdminRealName</td>
+                                        <td>@data.IP</td>
+                                        <td style="word-break:break-all; ">@data.Content</td>
+                                    </tr>
+                                }
+
+                            </table>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+        <!-- /.box-body -->
+    </div>
+</section>
+
+
+
+@section Scripts{
+}

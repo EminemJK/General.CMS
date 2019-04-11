@@ -1,0 +1,40 @@
+﻿
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>欢迎您访问 @ViewData["Title"]</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="author" content="Lio.Huang">
+    <link rel="icon" type="image/x-icon" href="~/favicon.ico" />
+
+    <link href="~/css/base.css" rel="stylesheet" />
+    <link href="~/css/common/header.css" rel="stylesheet" />
+    <link href="~/css/common/footer.css" rel="stylesheet" />
+    <link href="~/css/common/breadcumb.css" rel="stylesheet" />
+    @RenderSection("header", required: false)
+
+</head>
+<body>
+
+    @await Component.InvokeAsync("Header")
+
+    @RenderBody()
+
+    @await Component.InvokeAsync("Footer")
+    <!-- jQuery-2.2.4 js -->
+    <script src="~/js/jquery/jquery-2.2.4.min.js"></script>
+    <!-- Popper js -->
+    <script src="~/js/bootstrap/popper.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="~/js/bootstrap/bootstrap.min.js"></script>
+    <!-- All Plugins js -->
+    <script src="~/js/plugins/plugins.js"></script>
+    <!-- Active js -->
+    <script src="~/js/active.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

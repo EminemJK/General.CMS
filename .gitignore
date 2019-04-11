@@ -3,3 +3,23 @@
 ################################################################################
 
 /GeneralCMS/.vs
+/GeneralCMS/ConsoleAppSqlite/.vs/ConsoleAppSqlite/v15
+/GeneralCMS/ConsoleAppSqlite/ConsoleAppSqlite/bin/Debug/netcoreapp2.2
+/GeneralCMS/GeneralCMS.Admin/bin
+/GeneralCMS/GeneralCMS.Admin/logfile
+/GeneralCMS/GeneralCMS.Admin/obj
+/GeneralCMS/GeneralCMS.Admin/Properties/PublishProfiles
+*.user
+/GeneralCMS/GeneralCMS.Application/bin
+/GeneralCMS/GeneralCMS.Application/obj
+/GeneralCMS/GeneralCMS.Common/bin
+/GeneralCMS/GeneralCMS.Common/obj
+/GeneralCMS/GeneralCMS.Domain/bin
+/GeneralCMS/GeneralCMS.Domain/obj
+/GeneralCMS/GeneralCMS.Models/bin
+/GeneralCMS/GeneralCMS.Models/obj
+/GeneralCMS/GeneralCMS.Web/.vs
+/GeneralCMS/GeneralCMS.Web/bin
+/GeneralCMS/GeneralCMS.Web/logfile
+/GeneralCMS/GeneralCMS.Web/obj
+/GeneralCMS/GeneralCMS.Web/Properties/PublishProfiles

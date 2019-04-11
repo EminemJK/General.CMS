@@ -1,0 +1,32 @@
+﻿
+table.change-tr-color tbody tr:hover {
+    background-color: #428bca;
+    color: #FFF
+}
+
+tr.selected {
+    background-color: #428bca;
+    color:  #FFF
+}
+
+.search-style-marginLg {
+    margin-left: 10px
+}
+
+.row-item {
+    margin-top: 5px;
+    margin-right: 10px;
+    width: 100%;
+}
+
+.col-item {
+    margin-left: 10px;
+    margin-bottom: 5px;
+    width: 100%;
+    display: inline
+}
+
+.form-control-cover {
+    display: inline;
+}
+

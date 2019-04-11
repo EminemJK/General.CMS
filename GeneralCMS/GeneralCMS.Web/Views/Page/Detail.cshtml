@@ -1,0 +1,31 @@
+﻿@model GeneralCMS.Models.ViewModel.Frontend.VPageDetailInfo
+@{
+    ViewData["Title"] = "Details";
+}
+
+@section header{
+    <link href="~/css/page/list.css" rel="stylesheet" />
+}
+@await Component.InvokeAsync("Breadcrumb", Model.NavigationId)
+
+<div class="container">
+    <div class="row">
+        <div class="col-12"> 
+            <div class="pagelist-title  section-heading text-center">
+                <h3>@Model.Content.Title</h3>
+                <div class="pagelist-meta">
+                    <a href="#"><i class="fa fa-clock-o" aria-hidden="true"> 发布时间：</i> @Model.Content.CreateTime.ToString("yyyy年MM月dd日")</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="mb-100 ">
+            <div class="pagelist-content">
+               @Html.Raw(@Model.Content.Content)
+            </div>
+        </div>
+    </div>
+</div>

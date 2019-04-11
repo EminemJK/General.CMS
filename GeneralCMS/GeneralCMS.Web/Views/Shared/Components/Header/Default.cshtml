@@ -1,0 +1,93 @@
+﻿@model GeneralCMS.Models.ViewModel.Frontend.VHeaderPageData
+<!-- Loading -->
+<div class="preloader d-flex align-items-center justify-content-center">
+    <div class="preloader-circle"></div>
+    <div class="preloader-img">
+        <img src="@Model.LogoUrl" />
+    </div>
+</div>
+
+<header class="header-area">
+    <!-- ***** Top Header Area ***** -->
+    <div class="top-header-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="top-header-content d-flex align-items-center justify-content-between">
+                        <!-- Top Header Content -->
+                        <div class="top-header-meta">
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="@Model.Owner.Email"><i class="fa fa-envelope-o" aria-hidden="true"></i> <span>Email: @Model.Owner.Email</span></a>
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="@Model.Owner.Mobile"><i class="fa fa-phone" aria-hidden="true"></i> <span>联系电话: @Model.Owner.Mobile</span></a>
+                        </div>
+
+                        <!-- Top Header Content -->
+                        <div class="top-header-meta d-flex">
+                            <!-- Language Dropdown -->
+                            <div class="language-dropdown">
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle mr-30" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">语言</button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="#">简体中文</a>
+                                        <a class="dropdown-item" href="#">繁体中文</a>
+                                        <a class="dropdown-item" href="#">English</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ***** Navbar Area ***** -->
+    <div class="alazea-main-menu">
+        <div class="classy-nav-container breakpoint-off">
+            <div class="container">
+                <!-- Menu -->
+                <nav class="classy-navbar justify-content-between" id="alazeaNav">
+
+                    <!-- Nav Brand -->
+                    <a href="/" class="nav-brand" style="width:150px">
+                        <img src="~/images/logo.png" />
+                    </a>
+
+                    <!-- Navbar Toggler -->
+                    <div class="classy-navbar-toggler">
+                        <span class="navbarToggler"><span></span><span></span><span></span></span>
+                    </div>
+
+                    <!-- Menu -->
+                    <div class="classy-menu">
+                         
+                        <!-- Navbar Start -->
+                        <div class="classynav">
+                            <ul>
+                                @foreach (var content in Model.Navigations)
+                                {
+                                    if (content.Childs.Count > 0)
+                                    {
+                                        <li>
+                                            <a href="@content.Url">@content.Name</a>
+                                            <ul class="dropdown">
+                                                @foreach (var child in content.Childs)
+                                                {
+                                                    <li><a href="@child.Url">@child.Name</a></li>
+                                                }
+                                            </ul>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li><a href="@content.Url">@content.Name</a></li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+                        <!-- Navbar End -->
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>

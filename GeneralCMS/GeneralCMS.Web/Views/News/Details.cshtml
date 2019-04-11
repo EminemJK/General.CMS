@@ -1,0 +1,33 @@
+﻿@model GeneralCMS.Models.ViewModel.Frontend.VNewDetailPage
+@{
+    ViewData["Title"] = "Details";
+}
+
+@section header{
+    <link href="~/css/news/news.css" rel="stylesheet" />
+}
+@await Component.InvokeAsync("Breadcrumb" , Model.NavigationId)
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <!-- Section Heading -->
+            <div class="news-title  section-heading text-center">
+                <h3>@Model.Content.Title</h3>
+                <div class="news-meta">
+                    <a href="#"><i class="fa fa-clock-o" aria-hidden="true"> 发布时间：</i> @Model.Content.ReleaseTime.ToString("yyyy年MM月dd日")</a>
+                    <a href="#"><i class="fa fa-user" aria-hidden="true"> 作者：</i> @Model.Content.Author</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="mb-100 ">
+            <div class="news-content">
+                @Html.Raw(Model.Content.Content)
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,122 @@
+﻿@using GeneralCMS.Models.Enum
+@model GeneralCMS.Models.ViewModel.Frontend.VPageInfo
+@{
+    ViewData["Title"] = "产品服务";
+}
+
+@section header{
+    <link href="~/css/page/list.css" rel="stylesheet" />
+}
+
+
+@await Component.InvokeAsync("Breadcrumb", Model.NavigationId)
+
+<section class="section-padding-0-50">
+    <div class="container">
+        @if (Model.ContentType == EContentType.IconList)
+        {
+            <ul class="mb-30 iconlist-single-area ">
+                @foreach (var data in Model.PageContents)
+                {
+                    <li class="row">
+                        <div class="col-md-3 iconlist-icon">
+                            <i class="@data.IconCode fa-3x"></i>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="iconlist-title">
+                                <h5>@data.Title</h5>
+                            </div>
+                            <div class="iconlist-content">
+                                @Html.Raw(data.Content)
+                            </div>
+                        </div>
+                    </li>
+                }
+            </ul>
+        }
+        else if (Model.ContentType == EContentType.ImageText)
+        {
+            for (int idx = 0; idx < Model.PageContents.Count; idx++)
+            {
+                var content = Model.PageContents[idx];
+                var delay = ((idx + 1) * 100) + "ms";
+                <div class="section-heading text-center section-heading-title">
+                    <div class="border-line"></div>
+                    <h3>@content.Title</h3>
+                </div>
+                <div class="row justify-content-between">
+                    @if (idx % 2 == 0)
+                    {
+                        <div class="col-12 col-lg-6">
+                            <div class="imglist-img-area bg-overlay mb-50">
+                                <img src="@content.ImgUrl" alt="">
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-5">
+                            <div class="imglist-context-area mb-50 d-flex align-items-center wow fadeInUp" data-wow-delay="@delay">
+                                <!-- Content -->
+                                <div class="imglist-details-content">
+                                    @Html.Raw(content.Content)
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+
+                        <div class="col-12 col-lg-5">
+                            <div class="imglist-context-area mb-50 d-flex align-items-center wow fadeInUp" data-wow-delay="@delay">
+                                <div class="imglist-details-content">
+                                    @Html.Raw(content.Content)
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-lg-6">
+                            <div class="imglist-img-area bg-overlay mb-50">
+                                <img src="@content.ImgUrl" />
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        }
+        else if (Model.ContentType == EContentType.PageList)
+        {
+            @foreach (var data in Model.PageContents)
+            {
+                <div class="row">
+                    <div class="col-md-4 col-sm-3">
+                        <div class="pagelist-cover mb-30 ">
+                            <a href="/Page/Detail?contentId=@data.Id&navId=@Model.NavigationId"><img class="pagelist-img-area" src="@data.ImgUrl" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="col-md-8 col-sm-9">
+                        <div class="pagelist-content">
+                            <a href="/Page/Detail?contentId=@data.Id&navId=@Model.NavigationId" class="pagelist-title">
+                                <h5>@data.Title</h5>
+                            </a>
+                            <div class="pagelist-meta">
+                                <a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i> @data.CreateTime.ToString("yyyy年MM月dd日")</a>
+                                @*更新日期：<a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i> @data.UpdateTime.ToString("yyyy年MM月dd日")</a>*@
+                            </div>
+                            <div class="pagelist-outline">
+                                @Html.Raw(data.Content)
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            }
+
+            await Html.RenderPartialAsync("_PageView", new GeneralCMS.Models.ViewModel.Frontend.VPageViewInfo(Model, @"/Page/List"));
+        }
+        else
+        {
+            //富文本形式按详情页输出
+        }
+
+
+
+    </div>
+</section>

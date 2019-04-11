@@ -1,0 +1,65 @@
+﻿@model GeneralCMS.Models.ViewModel.Admin.VLoggedModel
+
+<header class="main-header">
+    <!-- Logo -->
+    <a href="index2.html" class="logo">
+        <span class="logo-mini"><b>G</b></span>
+        <span class="logo-lg"><b>General</b>.CMS</span>
+    </a>
+
+    <!-- 头部导航 -->
+    <nav class="navbar navbar-static-top" role="navigation">
+        <!-- 收缩按钮 -->
+        <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button"  title="切换导航">
+            <span class="sr-only"></span>
+        </a> 
+        <!-- 导航右侧 -->
+        <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="" class="sidebar-refresh" role="button" title="刷新当前界面">
+                        <span class="fa fa-refresh"></span>
+                    </a>
+                </li>
+                <!-- 用户信息 -->
+                <li class="dropdown user user-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <img src="~/images/sys/profle.png" class="user-image" alt="User Image">
+                        <span class="hidden-xs">@Model.RealName</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="user-header">
+                            <img src="~/images/sys/profle.png" class="img-circle" alt="User Image">
+                            <p>
+                                @Model.RealName
+                                <small>@Model.UserName</small>
+                            </p>
+                        </li>
+                        <li class="user-footer">
+                            <div class="pull-left">
+                                <a href="#" class="btn btn-default btn-flat">个人中心</a>
+                            </div>
+                            <div class="pull-right">
+                                <a href="/Account/Logout" class="btn btn-default btn-flat">退出系统</a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <!-- 菜单栏 -->
+                <li>
+                    <a href="#" data-toggle="control-sidebar"><i class="fa fa-th-large"></i></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<!-- 右侧菜单 -->
+<aside class="control-sidebar control-sidebar-dark">
+    <!-- Create the tabs -->
+    <ul class="nav nav-tabs nav-justified control-sidebar-tabs"></ul>
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div class="tab-pane" id="control-sidebar-home-tab"></div>
+    </div>
+</aside>

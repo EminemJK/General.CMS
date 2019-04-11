@@ -1,0 +1,76 @@
+﻿
+@{
+    Layout = "_ContextLayout";
+    ViewData["Title"] = "用户管理";
+}
+@using GeneralCMS.Models.Dto
+@model GeneralCMS.Models.ViewModel.Admin.VModelTableOutput<AdminUserDto>
+
+@section header{
+    <link href="~/lib/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/systemmng/userlist.css" rel="stylesheet" />
+}
+
+<section class="content-header">
+    <h1>
+        用户管理
+        <small>User Management</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> 系统管理</a></li>
+        <li class="active">用户管理</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="box">
+        <!-- 条件 -->
+        <div class="box-header">
+            <input type="text" class="form-control form-control-cover" placeholder="用户名" style="width:100px" id="input-username">
+            <input type="text" class="form-control form-control-cover" style="width:150px" placeholder="联系方式" id="input-phone">
+            <input type="text" class="form-control form-control-cover" style="width:150px" placeholder="邮箱" id="input-email">
+            <input type="text" class="form-control form-control-cover" style="width:150px" placeholder="真实姓名" id="input-realname">
+            <select class="form-control form-control-cover" style="width:120px" id="select-enable">
+                <option value="-1">全部状态</option>
+                <option value="0">启用</option>
+                <option value="1">禁用</option>
+            </select> 
+            <a class="btn btn-default fr btn-sm" id="btn-search">
+                <i class="fa fa-search"></i> 搜索
+            </a>
+            <!-- 新增用户 -->
+            <div class="row-item">
+                <button type="button" class="btn btn-primary btn-sm" id="btn_add" data-toggle="userinfo-dialog" data-target="#modal-default">
+                    <i class="fa fa-user-plus"> 新增用户</i>
+                </button>
+            </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <table id="userListTable" class="table table-bordered change-tr-color">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>账户</th>
+                        <th>真实姓名</th>
+                        <th>手机号</th>
+                        <th>邮箱</th>
+                        <th>注册时间</th>
+                        <th>是否启用</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        <!-- /.box-body -->
+    </div>
+    <!-- /.box -->
+
+    @await Html.PartialAsync("UserEdit");
+</section>
+
+@section Scripts{
+    <script src="~/lib/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/lib/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="~/js/systemmng/userlist.js"></script>
+}

@@ -1,0 +1,41 @@
+﻿@model GeneralCMS.Models.ViewModel.Frontend.VNewPage
+@{
+    ViewData["Title"] = "News";
+}
+
+
+@section header{
+    <link href="~/css/news/news.css" rel="stylesheet" />
+}
+
+@await Component.InvokeAsync("Breadcrumb", Model.NavigationId)
+
+<section class="section-padding-0-50">
+    <div class="container">
+        @foreach (var data in Model.data)
+        {
+            <div class="row">
+                <div class="col-md-4 col-sm-3">
+                    <div class="news-cover mb-30 ">
+                        <a href="/News/Details?newsid=@data.Id&navId=@Model.NavigationId"><img class="new-img-area" src="@data.ImgUrl" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-md-8 col-sm-9">
+                    <div class="news-content">
+                        <a href="/News/Details?newsid=@data.Id&navId=@Model.NavigationId" class="news-title">
+                            <h5>@data.Title</h5>
+                        </a>
+                        <div class="news-meta">
+                            <a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i> @data.ReleaseTime.ToString("yyyy年MM月dd日")</a>
+                            <a href="#"><i class="fa fa-user" aria-hidden="true"></i> @data.Author</a>
+                        </div>
+                        <p class="news-outline">@data.Summary</p>
+                    </div>
+                </div>
+            </div>
+        }
+
+        @await Html.PartialAsync("_PageView", new GeneralCMS.Models.ViewModel.Frontend.VPageViewInfo(Model, @"/News/List"));
+
+    </div>
+</section>

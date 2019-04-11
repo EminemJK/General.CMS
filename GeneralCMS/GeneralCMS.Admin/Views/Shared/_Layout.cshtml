@@ -1,0 +1,88 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>@ViewData["Title"] - 管理后台</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="author" content="Lio.Huang">
+    <link rel="icon" type="image/x-icon" href="~/favicon.ico" />
+
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/lib/admin-lte/dist/css/AdminLTE.min.css" rel="stylesheet" />
+    <link href="~/lib/admin-lte/dist/css/skins/_all-skins.css" rel="stylesheet" />
+    <link href="~/lib/PACE/themes/green/pace-theme-minimal.css" rel="stylesheet" />
+    @RenderSection("header", required: false)
+
+</head>
+<body class="hold-transition sidebar-mini fixed">
+    <div class="wrapper">
+        <!-- Main Header -->
+        @await Component.InvokeAsync("Header")
+
+        <!-- 左侧导航 徽标和侧栏 -->
+        @await Component.InvokeAsync("LeftSidebar")
+
+        <!-- 内容 -->
+        <div class="content-wrapper">
+            @RenderBody()
+        </div>
+
+        <!-- 页脚 -->
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                Anything you want
+            </div>
+            <strong>
+                <script>document.write(new Date().getFullYear());</script> Banana科技股份公司
+            </strong>- Colorlib All rights reserved
+        </footer>
+
+        <div class="control-sidebar-bg"></div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/lib/admin-lte/dist/js/adminlte.min.js"></script>
+    <script src="~/js/sidebarskins.js" charset="gbk"></script>
+    <script src="~/lib/PACE/pace.min.js"></script>
+    <script src="~/js/loadpartial.js"></script>
+    <script src="~/js/common.js"></script>
+    <script type="text/javascript">
+        $.loadPartial();
+    </script>
+    <script>
+        $(function () {
+            //adminlte 左侧边栏菜单点击效果
+            $('.sidebar-menu li > a').on('click', function () {
+                var $parent = $(this).parent().addClass('active');
+                $parent.siblings().removeClass('active');
+                var otherchild = $parent.siblings('.treeview.menu-open').removeClass('menu-open');
+                otherchild.find(".treeview-menu li").removeClass('active');
+            });
+
+            $('.sidebar-menu a').each(function () {
+                //父级刷新也可以高亮
+                if (this.href === window.location.href.replace("/#", "")) {
+                    $(this).parent().addClass('active')
+                        .closest('.treeview-menu').addClass('.menu-open').siblings().removeClass('active')
+                        .closest('.treeview').addClass('active').siblings().removeClass('active');
+                }
+                if (window.location.pathname == "/" && window.location.hash=="") {
+                    $('.sidebar-menu a').first().parent().addClass('active');
+                }
+            });
+        });
+
+        $(document).ajaxStart(function () {
+            Pace.restart();
+        });
+
+    </script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

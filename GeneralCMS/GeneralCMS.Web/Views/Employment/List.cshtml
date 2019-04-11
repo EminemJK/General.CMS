@@ -1,0 +1,58 @@
+﻿@{
+    ViewData["Title"] = "招贤纳士";
+}
+@model GeneralCMS.Models.ViewModel.Frontend.VRecruitmentModel
+
+@section header{
+    <link href="~/css/employment/list.css" rel="stylesheet" />
+}
+
+@await Component.InvokeAsync("Breadcrumb", Model.NavigationId)
+
+    <div class="container">
+        <div class="section-heading text-center">
+            <h3>招聘职位</h3>
+        </div>
+        <div class="mb-30">
+            @for (int idx = 0; idx < Model.Recruitments.Count; idx++)
+            {
+                var data = Model.Recruitments[idx];
+                <a href="#post_@idx" data-toggle="collapse">
+                    <div class="row ml-15 mb-15 mr-15 employment-info-title-area">
+                        <div class="col-md-3">
+                            @data.JobTitle
+                        </div>
+                        <div class="col-md-3">
+                            <i class="fa fa-map-marker color-red"></i> 工作地点：@data.Location
+                        </div>
+                        <div class="col-md-3">
+                            薪酬：@data.Salary
+                        </div>
+                        <div class="col-md-3">
+                            招聘人数：@data.RecruitingNum
+                        </div>
+                    </div>
+                </a>
+                <div id="post_@idx" class="collapse mb-30 ml-15 mr-15">
+                    @Html.Raw(data.JobDescription)
+                </div>
+            }
+        </div>
+        @if (string.IsNullOrEmpty(Model.Benefits))
+        {
+            <div class="welfare-area mb-30">
+            </div>
+        }
+        else
+        {
+            <div class="section-heading text-center section-heading-title">
+                <h3>福利待遇</h3>
+            </div>
+            <div class="welfare-area mb-30">
+                <div class="row">
+                    @Html.Raw(Model.Benefits)
+                </div>
+            </div>
+        }
+
+    </div>

@@ -1,0 +1,117 @@
+﻿@model GeneralCMS.Models.ViewModel.Admin.VRequestInfo
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>@ViewData["Title"] - 管理后台</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="author" content="Lio.Huang">
+    <link rel="icon" type="image/x-icon" href="~/favicon.ico" />
+
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/lib/toastr/toastr.min.css" rel="stylesheet" />
+
+    <link href="~/css/account/login.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <div class="wrapper">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="logo-box">
+                        <img src="~/images/logo.png" />
+                    </div>
+                </div>
+            </div>
+            <div class="row login-box">
+                <form action="/Account/Login" method="post" onsubmit="return toVaild('@Model.Data.ToString()')">
+                    <div class="col-md-12 system-name">
+                        General.CMS 管理平台™
+                    </div>
+                    <div class="col-md-12 form-inline">
+                        <div class="form-inline-font">
+                            用户名 ：
+                        </div>
+                        <div class="form-inline-input">
+                            <input type="text" name="UserName" value="admin" maxlength="8" />
+                        </div>
+                    </div>
+                    <div class="col-md-12 form-inline">
+                        <div class="form-inline-font">
+                            密码 ：
+                        </div>
+                        <div class="form-inline-input">
+                            <input type="password" name="Password" value="mimashi123" maxlength="16" />
+                        </div>
+                    </div>
+                    <div class="col-md-12 form-inline">
+                        <div class="form-inline-font">
+                            验证 :
+                        </div>
+                        <div class="form-inline-input">
+                            <div class="code-box" id="code-box">
+                                <input type="text" name="Code" class="code-input" />
+                                <p></p>
+                                <span>>>></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 login-btn">
+                        @*<div class="user-btn-link">
+                                <a href="">找回密码？</a>
+                            </div>*@
+                        <button type="submit">登录</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        <div class="row footer">
+            <div class="col-md-12">
+                <p class="copyright">
+                    &copy;
+                    Copyright &copy;
+                    <script>document.write(new Date().getFullYear());</script> Banana科技股份公司- Colorlib All rights reserved
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/lib/toastr/toastr.min.js"></script>
+    <script src="~/js/account/login.js"></script>
+    <script>
+
+        var codeFn;
+        window.addEventListener('load', function () {
+               codeFn = new moveCode("@Model.Data.ToString()");
+        });
+
+        
+        $(document).ready(function () {
+            if (window != top) {
+                top.location.href = location.href;
+            }
+        });
+    </script>
+
+    @if (Model.Code > 0)
+    {
+        <script> 
+            toastr.info('@Model.Msg');
+        </script>
+       
+    }
+</body>
+</html>

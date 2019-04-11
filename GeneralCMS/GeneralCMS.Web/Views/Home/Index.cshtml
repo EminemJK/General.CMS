@@ -1,0 +1,227 @@
+﻿@{
+    ViewData["Title"] = "Banana科技股份公司";
+}
+@model GeneralCMS.Models.ViewModel.Frontend.VHomePage
+@section header{
+    <link href="~/css/home/index.css" rel="stylesheet" />
+    <link href="~/css/home/aboutus.css" rel="stylesheet" />
+    <link href="~/css/news/news.css" rel="stylesheet" />
+}
+
+<!-- ##### 轮播图 ##### -->
+<section class="slideshow-area">
+    <div class="slideshow-post-slides owl-carousel">
+        <!-- Single slideshow Post -->
+        @foreach (var img in Model.ImgPlays)
+        {
+            <div class="single-slideshow-post bg-overlay">
+                <!-- Post Image -->
+                <div class="slide-img bg-img" style="background-image: url(@img.ImgUrl);"></div>
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center">
+                        <div class="col-12">
+                            <!-- Post Content -->
+                            <div class="slideshow-slides-content text-center">
+                                @if (!string.IsNullOrEmpty(img.Title))
+                                {
+                                    <h2>@img.Title</h2>
+                                    <p>@img.Subhead</p>
+                                }
+                                <div class="welcome-btn-group">
+                                    <a href="@img.LinkUrl" class="btn alazea-btn mr-30">了解更多</a>
+                                    <a href="/Contact/Index" class="btn alazea-btn active">联系我们</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</section>
+
+@{
+    string bgclass = "";
+    for (int idx = Model.PageContents.Count; Model.PageContents.Count > 0; idx--)
+    {
+        var content = Model.PageContents[0];
+        var kindContent = Model.PageContents.FindAll(c => c.SectionName == content.SectionName);
+       
+        if (content.ContentType == GeneralCMS.Models.Enum.EContentType.ImageText || content.ContentType == GeneralCMS.Models.Enum.EContentType.PageList)
+        {
+            <section class="@bgclass section-padding-50">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <!-- Section Heading -->
+                            <div class="section-heading text-center">
+                                <h2>@content.SectionName</h2>
+                                <p>@content.Subhead</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    @for (int idxy = 0; idxy < kindContent.Count; idxy++)
+                    {
+                        var data = kindContent[idxy];
+                        var delay = ((idx + 1) * 10) + "ms"; 
+                         bgclass = bgclass == "" ? "bg-gray" : ""; 
+
+                        if (idxy % 2 == 0)
+                        {
+                            <!-- ##### 图文数据 ##### -->
+                            <div class="row justify-content-between">
+                                <div class="col-12 col-lg-5">
+                                    <div class="mb-100"> 
+                                        <!-- Single Service Area -->
+                                        <div class="about-us-context-area d-flex align-items-center wow fadeInUp" data-wow-delay="@delay">
+                                            <!-- Content -->
+                                            <div class="about-us-details-content">
+                                                <div class="mr-30">
+                                                    <h4>@data.Title</h4>
+                                                </div>
+                                                @Html.Raw(data.Content)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-lg-6">
+                                    <div class="about-us-img-area bg-overlay mb-100">
+                                        <img src="@data.ImgUrl" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="row justify-content-between">
+                                <div class="col-12 col-lg-6">
+                                    <div class="about-us-img-area bg-overlay mb-100">
+                                        <img src="@data.ImgUrl" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-5">
+                                    <div class="mb-100">
+
+                                        <!-- Single Service Area -->
+                                        <div class="about-us-context-area d-flex align-items-center wow fadeInUp" data-wow-delay="@delay">
+
+                                            <!-- Content -->
+                                            <div class="about-us-details-content">
+                                                <div class="mr-30">
+                                                    <h4>@data.Title</h4>
+                                                </div>
+                                                @Html.Raw(data.Content)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> 
+                            </div>
+                        }
+
+                        Model.PageContents.Remove(data);
+                    }
+                </div>
+            </section>
+        }
+        else if (content.ContentType == GeneralCMS.Models.Enum.EContentType.IconList)
+        {
+            bgclass = bgclass == "" ? "bg-gray" : "";
+            <!-- ##### 列表数据 ##### -->
+            <section class="@bgclass new-arrivals-products-area section-padding-50">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <!-- Section Heading -->
+                            <div class="section-heading text-center">
+                                <h2>@content.SectionName</h2>
+                                <p>@content.Subhead</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        @for (int idxy = 0; idxy < kindContent.Count; idxy++)
+                        {
+                            var data = kindContent[idxy];
+                            var delay = ((idxy + 1) * 100) + "ms";
+                            <!-- Single Product Area -->
+                            <div class="col-12 col-sm-6 col-lg-3">
+                                <div class="single-product-area mb-50 wow fadeInUp" data-wow-delay="@delay">
+                                    <!-- Product Image -->
+                                    <div class="product-img">
+                                        <a href="#"><img src="@data.ImgUrl" alt=""></a>
+                                        <!-- Product Tag
+                                        <div class="product-tag sale-tag">
+                                            <a href="#">Hot</a>
+                                        </div>
+                                            -->
+
+                                    </div>
+                                    <!-- Product Info -->
+                                    <div class="product-info mt-15 text-center">
+                                        <a href="#">
+                                            <i class="@data.IconCode"></i> @data.Title
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            Model.PageContents.Remove(data);
+                        }
+
+                        <div class="col-12 text-center">
+                            <a href="/ProductService/List" class="btn alazea-btn">了解更多</a>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        }
+        else
+        {
+            Model.PageContents.RemoveAt(idx);
+        }
+    }
+    bgclass = bgclass == "" ? "bg-gray" : "";
+
+    <!-- ##### 公司动态 ##### -->
+    <section class="@bgclass section-padding-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <!-- Section Heading -->
+                    <div class="section-heading text-center">
+                        <h2>公司动态</h2>
+                        <p>News</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+
+                @foreach (var news in Model.News)
+                {
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="company-new-area mb-100">
+                            <div class="news-cover mb-30">
+                                <a href="/News/Details?newsid=@news.Id"><img src="@news.ImgUrl" alt=""></a>
+                            </div>
+                            <div class="news-content">
+                                <a href="/News/Details?newsid=@news.Id" class="news-title">
+                                    <h5>@news.Title</h5>
+                                </a>
+                                <div class="news-meta">
+                                    <a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i> @news.ReleaseTime.ToString("yyyy年MM月dd日")</a>
+                                    <a href="#"><i class="fa fa-user" aria-hidden="true"></i> @news.Author</a>
+                                </div>
+                                <p class="news-outline">@news.Summary</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </section>
+}

@@ -1,0 +1,26 @@
+{
+  "name": "GeneralCMS.Admin",
+  "authors": [
+    "lio.huang <393089518@qq.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "admin-lte": "adminlte#v2.4.9",
+    "toastr": "2.1.1",
+    "iCheck": "1.0.2",
+    "nestable": "*"
+  },
+  "resolutions": {
+    "jquery": "^3.2.1"
+  }
+}

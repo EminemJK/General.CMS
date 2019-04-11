@@ -1,0 +1,98 @@
+﻿@{
+    ViewData["Title"] = "About";
+}
+@model GeneralCMS.Models.ViewModel.Frontend.VAboutUs
+@section header{
+    <link href="~/css/home/aboutus.css" rel="stylesheet" />
+    <link href="~/css/news/news.css" rel="stylesheet" />
+}
+
+@await Component.InvokeAsync("Breadcrumb", Model.NavigationId);
+
+<!-- ##### 关于我们 ##### -->
+<section class="about-us-area">
+    <div class="container">
+        @{
+            for (int idx = 0; idx < Model.PageContents.Count; idx++)
+            {
+                var content = Model.PageContents[idx];
+                var delay = ((idx + 1) * 100) + "ms";
+                <div class="section-heading text-center section-heading-title">
+                    <div class="border-line"></div>
+                    <h3>@content.Title</h3>
+                </div>
+                <div class="row justify-content-between">
+                    @if (idx % 2 == 0)
+                    {
+                        <div class="col-12 col-lg-6">
+                            <div class="about-us-img-area bg-overlay mb-50">
+                                <img src="@content.ImgUrl" alt="">
+
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-5">
+                            <div class="about-us-context-area mb-50 d-flex align-items-center wow fadeInUp" data-wow-delay="@delay">
+                                <!-- Content -->
+                                <div class="about-us-details-content">
+                                    @Html.Raw(content.Content)
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+
+                        <div class="col-12 col-lg-5">
+                            <div class="about-us-context-area mb-50 d-flex align-items-center wow fadeInUp" data-wow-delay="@delay">
+
+                                <div class="about-us-details-content">
+                                    @Html.Raw(content.Content)
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-lg-6">
+                            <div class="about-us-img-area bg-overlay mb-50">
+                                <img src="@content.ImgUrl" />
+                            </div>
+                        </div>
+
+                    }
+                </div>
+            }
+        }
+
+
+        <!-- 公司动态 -->
+        <div class="section-heading text-center section-heading-title">
+            <div class="border-line"></div>
+            <h3>公司动态</h3>
+            <div class="company-new-section">
+                <a href="/News/List">更多资讯 <i class="fa fa-angle-right"></i></a>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            @foreach (var news in Model.News)
+            {
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="company-new-area mb-100">
+                        <div class="news-cover mb-30">
+                            <a href="/News/Details?newid=@news.Id"><img src="@news.ImgUrl" alt=""></a>
+                        </div>
+                        <div class="news-content">
+                            <a href="/News/Details?newid=@news.Id" class="news-title">
+                                <h5>@news.Title</h5>
+                            </a>
+                            <div class="news-meta">
+                                <a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i> @news.ReleaseTime.ToString("yyyy年MM月dd日")</a>
+                                <a href="#"><i class="fa fa-user" aria-hidden="true"></i> @news.Author</a>
+                            </div>
+                            <p class="news-outline">@news.Summary</p>
+                        </div>
+                    </div>
+                </div>
+            } 
+        </div>
+
+    </div>
+</section>

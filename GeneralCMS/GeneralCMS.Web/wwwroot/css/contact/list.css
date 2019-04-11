@@ -1,0 +1,17 @@
+﻿
+
+.map-area {
+   border:1px solid black;
+}
+
+
+.contact-area { 
+    padding:5% 15px;
+    vertical-align: middle;
+    display: table-cell;
+    line-height:1.7;
+}
+
+.contact-area h5{ 
+    line-height: 1.7;
+}

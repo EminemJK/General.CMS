@@ -1,0 +1,66 @@
+﻿@model GeneralCMS.Models.ViewModel.Frontend.VPageViewInfo
+
+<nav aria-label="Page navigation mb-30 ">
+    <ul class="pagination">
+        @{
+            var pageMin = (Model.pageNo - 2) > 0 ? (Model.pageNo - 2) : 1;
+            var pageMax = (Model.pageNo + 2) > Model.pageCount ? Model.pageCount : (Model.pageNo + 2);
+            int nextPage = Model.pageNo + 1;
+            int perPage = Model.pageNo - 1;
+            if (Model.pageCount > 1)
+            {
+                if (Model.pageNo == 1)
+                {
+                    pageMax = 5;
+                    for (int ipagenum = pageMin; ipagenum <= pageMax; ipagenum++)
+                    {
+                        if (ipagenum == Model.pageNo)
+                        {
+                            <li class="page-item"><a class="page-link pagination-active">@ipagenum</a></li>
+                        }
+                        else
+                        {
+                            <li class="page-item"><a class="page-link" href="@Model.PerUrl?navId=@Model.NavigationId&pageNum=@ipagenum&pageSize=@Model.pageSize">@ipagenum</a></li>
+                        }
+                    }
+                    <li class="page-item"><a class="page-link" href="@Model.PerUrl?navId=@Model.NavigationId&pageNum=@nextPage&pageSize=@Model.pageSize"><i class="fa fa-angle-right"></i></a></li>
+                    <li class="page-item"><a class="page-link" href="@Model.PerUrl?navId=@Model.NavigationId&pageNum=@Model.pageCount&pageSize=@Model.pageSize"><i class="fa fa-angle-double-right"></i></a></li>
+
+                }
+                else
+                {
+                    if (Model.pageCount == Model.pageNo)
+                    {
+                        pageMin = Model.pageNo - 4;
+                    }
+                    if (Model.pageNo - 2 > 1)
+                    {
+                        <li class="page-item"><a class="page-link" href="@Model.PerUrl?navId=@Model.NavigationId&pageNum=1&pageSize=@Model.pageSize"><i class="fa fa-angle-double-left"></i></a></li>
+                        <li class="page-item"><a class="page-link" href="@Model.PerUrl?navId=@Model.NavigationId&pageNum=@perPage&pageSize=@Model.pageSize"><i class="fa fa-angle-left"></i></a></li>
+                    }
+                    for (int ipagenum = pageMin; ipagenum <= pageMax; ipagenum++)
+                    {
+                        if (ipagenum == Model.pageNo)
+                        {
+                            <li class="page-item"><a class="page-link pagination-active">@ipagenum</a></li>
+                        }
+                        else
+                        {
+                            <li class="page-item"><a class="page-link" href="@Model.PerUrl?navId=@Model.NavigationId&pageNum=@ipagenum&pageSize=@Model.pageSize">@ipagenum</a></li>
+                        }
+                    }
+                    if (Model.pageNo + 2 < Model.pageCount)
+                    {
+                        <li class="page-item"><a class="page-link" href="@Model.PerUrl?navId=@Model.NavigationId&pageNum=@nextPage&pageSize=@Model.pageSize"><i class="fa fa-angle-right"></i></a></li>
+                        <li class="page-item"><a class="page-link" href="@Model.PerUrl?navId=@Model.NavigationId&pageNum=@Model.pageCount&pageSize=@Model.pageSize"><i class="fa fa-angle-double-right"></i></a></li>
+                    }
+                }
+            }
+            else
+            {
+                <li class="page-item"><a class="page-link pagination-active" href="@Model.PerUrl?navId=@Model.NavigationId&pageNum=@Model.pageNo&pageSize=@Model.pageSize">1</a></li>
+            }
+        }
+    </ul>
+</nav>
+

@@ -1,0 +1,59 @@
+﻿@model GeneralCMS.Models.ViewModel.Admin.VSidebarMenu
+
+
+<aside class="main-sidebar">
+    <section class="sidebar">
+        <!-- 用户栏 -->
+        <div class="user-panel">
+            <div class="pull-left image">
+                <img src="~/images/sys/profle.png" class="img-circle" alt="User Image">
+            </div>
+            <div class="pull-left info">
+                <p>@Model.User.RealName</p>
+                <a href="#"><i class="fa fa-circle text-success"></i> @Model.User.IP</a>
+            </div>
+        </div>
+
+        <!-- 查询 -->
+        <form action="#" method="get" class="sidebar-form">
+            <div class="input-group">
+                <input type="text" name="q" class="form-control" placeholder="Search...">
+                <span class="input-group-btn">
+                    <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </span>
+            </div>
+        </form>
+
+        <!-- 导航 -->
+        <ul class="sidebar-menu" data-widget="tree">
+            <li class="header">菜单栏</li>
+            @foreach (var m in Model.Menus)
+            {
+                if (m.Childs.Count > 0)
+                {
+                    <li class="treeview">
+                        <a href="@m.Route">
+                            <i class="fa @m.Icon"></i> <span>@m.Name</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            @foreach (var c in m.Childs)
+                            {
+                                <li><a href="@c.Route"><i class="fa @c.Icon"></i> <span>@c.Name</span></a></li>
+                            }
+                        </ul>
+                    </li>
+                }
+                else
+                {
+                    <li><a href="@m.Route"><i class="fa @m.Icon"></i> <span>@m.Name</span></a></li>
+                }
+            } 
+        </ul>
+        <!-- /.导航 -->
+    </section>
+</aside>

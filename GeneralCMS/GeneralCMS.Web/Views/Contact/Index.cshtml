@@ -1,0 +1,26 @@
+﻿@model GeneralCMS.Models.ViewModel.Frontend.VContactInfo
+@{
+    ViewData["Title"] = "联系我们";
+}
+
+@section header{
+    <link href="~/css/contact/list.css" rel="stylesheet" />
+}
+
+@await Component.InvokeAsync("Breadcrumb", Model.NavigationId)
+
+<div class="container">
+    <div class="row mb-30">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <iframe width='100%' height='330' frameborder='0' scrolling='no' marginheight='0' marginwidth='0' src='@Model.Owner.MapIFrameUrl'></iframe>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 contact-area">
+            <h5>@Model.Owner.Name</h5>
+            <p>联系人：@Model.Owner.LinkMan</p>
+            <p>联系电话：@Model.Owner.Mobile</p>
+            <p>联系邮箱：@Model.Owner.Email</p>
+            <p>公司详细地址：@Model.Owner.Address</p>
+        </div>
+    </div>
+</div>
+

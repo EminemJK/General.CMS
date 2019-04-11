@@ -1,0 +1,70 @@
+﻿/*  About Us Area CSS */
+.about-us-area {
+    position: relative;
+    z-index: 1;
+}
+
+    .about-us-area .border-line {
+        width: 100%;
+        height: 1px;
+        background-color: #ebebeb;
+    }
+
+.about-us-context-area {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 50px;
+}
+
+    .about-us-context-area:last-child {
+        margin-bottom: 0;
+    }
+
+    .about-us-context-area .service-icon {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 45px;
+        flex: 0 0 45px;
+        max-width: 45px;
+        width: 45px;
+    }
+
+    .about-us-context-area .about-us-details-content {
+        word-break: break-all;
+    }
+
+        .about-us-context-area .about-us-details-content p {
+            margin-bottom: 0;
+        }
+
+    .about-us-context-area a {
+        text-decoration: underline;
+    }
+
+        .about-us-context-area a:hover, a:focus {
+            color: red;
+        }
+
+.about-us-img-area {
+    position: relative;
+    z-index: 1;
+    border-radius: 6px;
+    box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.15);
+}
+
+    .about-us-img-area.bg-overlay:after {
+        border-radius: 6px;
+    }
+
+    .about-us-img-area img {
+        position: relative;
+        border-radius: 6px;
+    }
+
+.section-heading-title h3 {
+    width: 160px;
+    margin-top: -17px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+}
+

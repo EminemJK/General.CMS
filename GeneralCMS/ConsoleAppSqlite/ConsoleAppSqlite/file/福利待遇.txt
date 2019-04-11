@@ -1,0 +1,25 @@
+﻿<div class="col-12 col-sm-6 col-lg-3 welfare-single-area" data-toggle="tooltip" data-placement="left" title="每个月都有生日会">
+    <i class="fa fa-birthday-cake fa-2x"></i> 生日会
+</div>
+<div class="col-12 col-sm-6 col-lg-3 welfare-single-area" data-toggle="tooltip" data-placement="left" title="为员工缴纳五险一金">
+    <i class="fa fa-money fa-2x"></i> 五险一金
+</div>
+<div class="col-12 col-sm-6 col-lg-3 welfare-single-area" data-toggle="tooltip" data-placement="left" title="一年有一次调薪机会">
+    <i class="fa fa-money fa-2x"></i> 调薪
+</div>
+<div class="col-12 col-sm-6 col-lg-3 welfare-single-area" data-toggle="tooltip" data-placement="left" title="为员工配有一个鼓励师？">
+    <i class="fa fa-female fa-2x"></i> 程序猿鼓励师
+</div>
+<div class="col-12 col-sm-6 col-lg-3 welfare-single-area" data-toggle="tooltip" data-placement="left" title="每年出国旅游">
+    <i class="fa fa-plane fa-2x"></i> 出国旅游
+</div>
+<div class="col-12 col-sm-6 col-lg-3 welfare-single-area" data-toggle="tooltip" data-placement="left" title="提供培训技能的机会">
+    <i class="fa fa-graduation-cap fa-2x"></i> 培训
+</div>
+<div class="col-12 col-sm-6 col-lg-3 welfare-single-area" data-toggle="tooltip" data-placement="left" title="每个员工都有晋升的机会">
+    <i class="fa fa-child fa-2x"></i> 晋升
+</div>
+
+<div class="col-12 col-sm-6 col-lg-3 welfare-single-area">
+    <i class="fa fa-smile-o fa-2x"></i> 还有更多~~~
+</div>

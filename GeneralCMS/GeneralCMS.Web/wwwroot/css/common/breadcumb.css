@@ -1,0 +1,65 @@
+﻿/* Breadcumb Area CSS */
+.breadcrumb-area {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+}
+
+    .breadcrumb-area .top-breadcrumb-area {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        height: 350px;
+    }
+
+@media only screen and (max-width: 767px) {
+    .breadcrumb-area .top-breadcrumb-area {
+        height: 220px;
+    }
+}
+
+.breadcrumb-area .top-breadcrumb-area h2 {
+    margin-top: 132px;
+    font-size: 36px;
+    color: #ffffff;
+    margin-bottom: 0;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+@media only screen and (max-width: 767px) {
+    .breadcrumb-area .top-breadcrumb-area h2 {
+        margin-top: 112px;
+        font-size: 30px;
+    }
+}
+
+.breadcrumb-area .breadcrumb {
+    margin: 0;
+    padding-top: 30px;
+    padding-bottom: 50px;
+    padding-left: 0;
+    padding-right: 0;
+    background-color: transparent;
+}
+
+    .breadcrumb-area .breadcrumb .breadcrumb-item {
+        font-size: 16px;
+        color: #b7b7b7;
+        text-transform: capitalize;
+    }
+
+        .breadcrumb-area .breadcrumb .breadcrumb-item a {
+            text-transform: capitalize;
+            font-size: 16px;
+            color: #303030;
+        }
+
+            .breadcrumb-area .breadcrumb .breadcrumb-item a:hover, .breadcrumb-area .breadcrumb .breadcrumb-item a:focus {
+                color: #70c745;
+            }
+
+        .breadcrumb-area .breadcrumb .breadcrumb-item + .breadcrumb-item::before {
+            color: #303030;
+            content: ">";
+        }

@@ -1,0 +1,125 @@
+﻿@model GeneralCMS.Models.ViewModel.Frontend.VFooterPageData;
+
+<footer class="footer-area bg-img" style="background-image: url(@Model.FooterBgUrl);">
+    <!-- Main Footer Area -->
+    <div class="main-footer-area">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-12 col-sm-6 col-lg-3">
+                    <div class="single-footer-widget">
+                        <div class="footer-logo mb-30" style="width:150px">
+                            <a href="#">
+                                <img src="@Model.LogoUrl" />
+                            </a>
+                        </div>
+
+                        <div class="social-info">
+                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-footer-widget">
+                        <div class="widget-title">
+                            <h5>友情链接</h5>
+                        </div>
+                        <nav class="widget-nav">
+                            <ul>
+                                @foreach (var link in Model.FriendlyLinks)
+                                {
+                                    if (link.Target == GeneralCMS.Models.Enum.EYesOrNo.No)
+                                    {
+                                        <li><a href="@link.LinkUrl" target="_blank">@link.Name</a></li>
+                                    }
+                                    else
+                                    {
+                                        <li><a href="@link.LinkUrl" target="_parent">@link.Name</a></li>
+                                    }
+                                }
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-footer-widget">
+                        @if (Model.QRCode.Count > 0)
+                        {
+                            <div class="widget-title">
+                                <h5>关注我们</h5>
+                            </div>
+
+                            @foreach (var qrUrl in Model.QRCode)
+                            {
+                                <div class="single-best-seller-product d-flex align-items-center">
+                                    <div class="product-thumbnail">
+                                        <img src="@qrUrl" alt="">
+                                    </div>
+                                    @*<div class="product-info">
+                                        <p>@qr.Name</p>
+                                    </div>*@
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-footer-widget">
+                        <div class="widget-title">
+                            <h5>联系我们</h5>
+                        </div>
+
+                        <div class="contact-information">
+                            <p><span>联系地址:</span> @Model.Owner.Address</p>
+                            <p><span>联系人:</span> @Model.Owner.LinkMan</p>
+                            <p><span>联系电话:</span> @Model.Owner.Mobile</p>
+                            <p><span>Email:</span> @Model.Owner.Email</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Bottom Area -->
+    <div class="footer-bottom-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="border-line"></div>
+                </div>
+                <!-- Copywrite Text -->
+                <div class="col-12 col-md-6">
+                    <div class="copywrite-text">
+                        <p>
+                            &copy;
+                            Copyright &copy;
+                            <script>document.write(new Date().getFullYear());</script> Banana科技股份公司- Colorlib All rights reserved
+                        </p>
+                    </div>
+                </div>
+                <!-- Footer Nav -->
+                <div class="col-12 col-md-6">
+                    <div class="footer-nav">
+                        <nav>
+                            <ul>
+                                @foreach (var nav in Model.Navigations)
+                                {
+                                     <li><a href="@nav.Url">@nav.Name</a></li>
+                                }
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+

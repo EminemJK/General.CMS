@@ -1,0 +1,26 @@
+﻿
+body {
+    background-color: #ecf0f5;
+}
+
+.icon-sign {
+    color: #a19d9d;
+    font-size: 10px;
+    margin-left: 15px;
+}
+
+.icon {
+    color: #ff0000;
+}
+
+.action-buttons a{
+    margin: 0 3px;
+    display: inline-block;
+    opacity: .85;
+    -webkit-transition: all .1s;
+    transition: all .1s;
+}
+
+    .action-buttons a:hover {
+        transform: scale(1.2);
+    }

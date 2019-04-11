@@ -1,0 +1,191 @@
+﻿@model GeneralCMS.Models.ViewModel.Admin.VPageImgPlay
+@{
+    Layout = "_ContextLayout";
+    ViewData["Title"] = "轮播图管理";
+}
+@section header{
+    <link href="~/lib/select2/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="~/lib/iCheck/skins/all.css" rel="stylesheet" />
+    <link href="~/css/pagemng/slideshow.css" rel="stylesheet" />
+}
+
+<section class="content-header">
+    <h1>
+        轮播图管理
+        <small>Slideshow</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> 页面管理</a></li>
+        <li class="active">轮播图管理</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="nav-tabs-custom">
+        <ul class="nav nav-tabs">
+            @for (int idx = 0; idx < Model.NavigationsImgPlay.Count; idx++)
+            {
+                var data = Model.NavigationsImgPlay[idx];
+                var active = "";
+                if (idx == 0)
+                {
+                    active = "class=active";
+                }
+
+                <li @active><a href="#@data.pageId" data-toggle="tab">@data.Name</a></li>
+            }
+        </ul>
+        <div class="tab-content">
+            @for (int idx = 0; idx < Model.NavigationsImgPlay.Count; idx++)
+            {
+                var data = Model.NavigationsImgPlay[idx];
+                var active = "";
+                if (idx == 0)
+                {
+                    active = "active";
+                }
+
+                <div class="@active tab-pane" id="@data.pageId">
+                    <div class="box">
+                        <div class="box-header">
+                            <button type="button" class="btn btn-primary btn-sm" onclick="btn_add(@data.Id)"><i class="fa fa-plus-circle"></i> 新增</button>
+                            <button type="button" class="btn btn-success btn-sm" onclick="slideshowSwitchOff(this,0)"><i class="fa fa-chevron-circle-up"></i> 启用</button>
+                            <button type="button" class="btn btn-danger btn-sm" onclick="slideshowSwitchOff(this,1)"><i class="fa fa-chevron-circle-down"></i> 禁用</button>
+                            <button type="button" class="btn btn-danger btn-sm" onclick="slideshowDelete(this)"><i class="fa fa-trash"></i> 删除</button>
+                        </div>
+                        <div class="box-body no-padding">
+                            <table class="table table-striped">
+                                <tr>
+                                    <th></th>
+                                    <th style="width:80px">ID</th>
+                                    <th style="width:200px">标题</th>
+                                    <th style="width:200px">副标题</th>
+                                    <th style="width:200px">图片</th>
+                                    <th style="width:200px">跳转地址</th>
+                                    <th style="width:200px">打开方式</th>
+                                    <th style="width:100px">轮播顺序</th>
+                                    <th>当前状态</th>
+                                    <th>操作</th>
+                                </tr>
+
+                                @foreach (var img in data.HeaderImgPlays)
+                                {
+                                    <tr class="table-tr">
+                                        <td><input type="checkbox" class="flat-green" /></td>
+                                        <td>@img.Id</td>
+                                        <td>@img.Title</td>
+                                        <td>@img.Subhead</td>
+                                        <td>
+                                            @{
+                                                img.ImgUrl = !string.IsNullOrEmpty(img.ImgUrl) ? img.ImgUrl : "/images/sys/nopic.png";
+                                            }
+                                            <div class="bg-section" name="imgurl" style="background-image:url('@img.ImgUrl')"> 
+                                                <button type="button" class="btn btn-warning btn-sm" onclick="previewimg(this)">
+                                                    <i class="fa fa-eye"></i> 预览
+                                                </button> 
+                                            </div>
+                                        </td>
+                                        <td>@img.LinkUrl</td>
+                                        <td value="@Convert.ToInt32(img.Target)">@img.TargetString</td>
+                                        <td>@img.Sort</td>
+                                        <td>
+                                            @if (img.IsDisable == GeneralCMS.Models.Enum.EYesOrNo.Yes)
+                                            {
+                                                <span class="label label-danger">禁用</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="label label-success">启用</span>
+                                            }
+                                        </td>
+                                        <td> 
+                                            <button type="button" class="btn btn-info btn-sm" onclick="btn_edit(this,@data.Id)"><i class="fa fa-edit"></i> 编辑</button>
+                                        </td>
+                                    </tr>
+                                }
+
+                            </table>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+@*预览窗口*@
+<div class="modal" id="previewimgDialog">
+    <div class="modal-dialog">
+        <div class="box box-success">
+            <div class="box-header with-border">
+                <h3 class="box-title">预览图片</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+            </div>
+            <div class="box-body">
+                <div id="imgshowbox" style="background-repeat: no-repeat;background-size: 100% 100%; height:400px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@await Html.PartialAsync("SlideshowEdit")
+
+@section Scripts{
+    <script src="~/lib/iCheck/icheck.min.js"></script>
+    <script src="~/lib/select2/dist/js/select2.min.js"></script>
+    <script src="~/js/pagemng/slideshow.js"></script>
+    <script>
+
+        $('input[type="checkbox"].flat-green').iCheck({
+            checkboxClass: 'icheckbox_minimal-red'
+        });
+
+        $('input').on('ifChecked', function (event) {
+            $(this).closest("tr").css("background-color", "#428bca");
+        });
+        $('input').on('ifUnchecked', function (event) {
+            $(this).closest("tr").css("background-color", "#FFF");
+        });
+
+        //上传图片
+        $("#uploadFileBtn").click(function () {
+                var input = $(this).next();
+                input.click();
+                input.unbind("change").bind("change", function () {
+                    uploadfile($(this), "@Model.UploadUrl");
+                });
+        });
+        
+        //上传图片
+        function uploadfile(obj, url) {
+            var file = obj[0].files[0];
+            var data = new FormData();
+            data.append('file', file);
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: data,
+                processData: false,
+                contentType: false,
+                crossDomain: true,
+                xhrFields: {
+                    withCredentials: true
+                },
+                success: function (res) {
+                    if (res.code == "200") {
+                        toastr.success("ok");
+                        $("#img-url").css("background-image", "url('" + res.data.fullPath + "')");
+                    }
+                    else {
+                        toastr.error(data.msg);
+                    }
+                },
+                error: function (err) {
+                    toastr.error("no");
+                }
+            });
+        };
+    </script>
+}

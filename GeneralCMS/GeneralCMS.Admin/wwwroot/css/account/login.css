@@ -1,0 +1,204 @@
+﻿@charset "utf8";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    touch-action: pan-y;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+img {
+    border: none;
+}
+
+html, body {
+    background-color: #F4F4F4;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    color: #69696d; 
+    background: url(/images/sys/loginbg.jpg) no-repeat;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+    .clearfix:before,
+    .clearfix:after {
+        display: table;
+        line-height: 0;
+        content: "";
+    }
+
+    .clearfix:after {
+        clear: both;
+    }
+
+/*头部*/
+.wrapper {
+    width: 350px;
+    margin: auto;
+}
+
+.logo-box{
+    margin: 100px 5px 20px 5px; 
+}
+
+    .logo-box img {
+        height: 50px;
+    }
+
+/* 底部 */
+.footer {
+    text-align: center;
+    margin-top: 45%;
+} 
+    .footer .copyright {
+        margin-top: 5px;
+    }
+/*表单*/
+
+.login-box {
+    z-index: 9;
+    margin: 0px 5px;
+    padding-top: 5px;
+    border: 1px solid #666;
+    background-color: #000000;
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 10px;
+    box-shadow: 0 0 50px #F4F4F4;
+    color: #fff;
+}
+
+    .login-box .system-name {
+        font-family: "微软雅黑";
+        font-size: 25px;
+        color: #fff;
+        margin:10px 10px 20px 0px;
+    }
+
+     
+.form-inline {
+    position: relative;
+    display: block;
+}
+
+    .form-inline + .form-inline {
+        margin-top: 10px;
+    }
+
+    .form-inline > div {
+        height: 40px;
+        line-height: 40px;
+    }
+
+.form-inline-font {
+    position: absolute; 
+    width: 70px; 
+    font-family: "Arial";
+    font-size: 15px;
+    text-align: right;
+}
+
+.form-inline-input {
+    padding-left: 85px;
+}
+
+    .form-inline-input input,
+    .code-box {
+        padding: 0 10px;
+        width: 220px;
+        height: 40px;
+        color: #fff;
+        text-shadow: 1px 1px 1px black;
+        background: rgba(0, 0, 0, 0.16);
+        border: 0;
+        border-radius: 5px;
+        outline: none;
+        box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.06);
+    }
+
+.code-box {
+    position: relative;
+}
+
+    .code-box p,
+    .code-box span {
+        display: block;
+        position: absolute;
+        left: 0;
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
+        border-radius: 5px;
+    }
+
+    .code-box span {
+        width: 40px;
+        background-color: #fff;
+        font-family: "宋体";
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .code-box p {
+        width: 0;
+        background-color: #FFFF99;
+        overflow: hidden;
+        text-indent: -20px;
+        transition: background 1s ease-in;
+    }
+
+    .code-box .code-input {
+        display: none;
+    }
+
+.login-btn {
+    padding-right: 25px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    text-align: right;
+    font-size: 0;
+}
+
+.user-btn-link {
+    display: inline-block;
+    vertical-align: sub;
+    padding-right: 10px;
+}
+
+    .user-btn-link a {
+        color: #fff;
+        font-size: 13px;
+    }
+
+        .user-btn-link a + a {
+            margin-left: 5px;
+        }
+
+        .user-btn-link a:hover {
+            text-decoration: underline;
+        }
+
+.login-btn button {
+    border: none;
+    padding: 8px 12px;
+    background-color: #00a1d2;
+    border-radius: 3px;
+    font-size: 14px;
+    color: #fff;
+    cursor: pointer;
+}
+
+    .login-btn button:hover {
+        box-shadow: 0 0 3px #00a1d2;
+        text-shadow: 0 0 1px #b3d6dc,0 0 2px #e6e9de;
+    }

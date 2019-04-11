@@ -1,0 +1,28 @@
+﻿.accordion {
+    position: relative;
+    z-index: 1;
+    -webkit-transition-duration: 500ms;
+    transition-duration: 500ms;
+}
+ 
+.employment-info-title-area {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-left: 5px solid #70c745;
+}
+
+.welfare-area i {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    margin-right: 5px;
+    line-height: 38px;
+    margin: 5px;
+    vertical-align: middle;
+}
+
+.welfare-area .welfare-single-area:hover {
+    color: #70c745;
+}
+
+ 
