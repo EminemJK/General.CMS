@@ -9,7 +9,7 @@ windows 10、vs2017、支持多种数据库、Asp.Net Core MVC 2.2
 * Async和Await 异步编程
 * Cors 简单的跨域解决方案
 * AOP切面日志
-* [Banana.Uow](https://www.nuget.org/packages/Banana.Uow/)
+* 基于[Banana.Uow](https://github.com/EminemJK/Banana) ORM，支持多数据库
 * 其他
 
 ### 前端
@@ -23,6 +23,7 @@ windows 10、vs2017、支持多种数据库、Asp.Net Core MVC 2.2
 * [nestable](https://github.com/dbushell/Nestable)
 * [toastr](https://github.com/CodeSeven/toastr)
 * jQuery v2.2.4
+* 其他
 
 ### 预览
 #### Client
