@@ -10,6 +10,7 @@ windows 10、vs2017、支持多种数据库、Asp.Net Core MVC 2.2
 * Cors 简单的跨域解决方案
 * AOP切面日志
 * 基于[Banana.Uow](https://github.com/EminemJK/Banana) ORM，支持多数据库
+* Authorize 基于角色授权
 * 其他
 
 ### 前端
