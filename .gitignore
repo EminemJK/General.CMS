@@ -23,3 +23,5 @@
 /GeneralCMS/GeneralCMS.Web/logfile
 /GeneralCMS/GeneralCMS.Web/obj
 /GeneralCMS/GeneralCMS.Web/Properties/PublishProfiles
+/GeneralCMS/GeneralCMS.Admin
+/GeneralCMS/ConsoleAppSqlite/ConsoleAppSqlite/obj
